@@ -26,7 +26,6 @@ import { SecuritySettings } from "./screens/Dashboard/SecuritySettings";
 import { AdminLoginPage } from "./screens/AdminPage";
 import { AdminDashboardLayout, AdminDashboardHome } from "./screens/AdminDashboard";
 import { ProtectedAdminRoute } from "./components/admin/ProtectedAdminRoute";
-import "./index.css";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
