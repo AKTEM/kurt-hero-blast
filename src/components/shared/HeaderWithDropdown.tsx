@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "../ui/badge";
 import { ShoppingCart } from "./ShoppingCart";
 import { useAuth } from "../../contexts/AuthContext";
+import { useAdmin } from "../../contexts/AdminContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 
@@ -30,6 +31,7 @@ const shopCategories = {
 
 export const HeaderWithDropdown = (): JSX.Element => {
   const { user } = useAuth();
+  const { isAdmin } = useAdmin();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
@@ -189,11 +191,11 @@ export const HeaderWithDropdown = (): JSX.Element => {
     {isUserDropdownOpen && (
       <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-50">
         <Link
-          to="/dashboard"
+          to={isAdmin ? "/admin/dashboard" : "/dashboard"}
           onClick={() => setIsUserDropdownOpen(false)}
           className="block px-4 py-3 text-gray-800 hover:bg-gray-100 transition-colors"
         >
-          User Profile/Dashboard
+          {isAdmin ? "Admin Dashboard" : "User Profile/Dashboard"}
         </Link>
         <button
           onClick={handleLogout}
