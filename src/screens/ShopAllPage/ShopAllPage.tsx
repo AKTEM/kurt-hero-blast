@@ -4,8 +4,9 @@ import { HeaderWithDropdown } from "../../components/shared/HeaderWithDropdown";
 import { FooterSection } from "../LandingPage/sections/FooterSection";
 import { Card, CardContent } from "../../components/ui/card";
 import { ChevronLeftIcon, ChevronRightIcon, ChevronUp, ChevronDown } from "lucide-react";
+import { useProducts } from "../../hooks/useProducts";
 
-const products = [
+const filterCategories = {
   {
     id: 1,
     image: "/img-20250902-wa0007.png",
@@ -171,6 +172,7 @@ const filterCategories = {
 
 export const ShopAllPage = (): JSX.Element => {
   const [searchParams] = useSearchParams();
+  const { products: firebaseProducts, loading } = useProducts();
   const [isFilterExpanded, setIsFilterExpanded] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState({
     product: [] as string[],
@@ -204,12 +206,12 @@ export const ShopAllPage = (): JSX.Element => {
     });
   };
 
-  const filteredProducts = products.filter(product => {
+  const filteredProducts = firebaseProducts.filter(product => {
     const matchesProduct = selectedFilters.product.length === 0 || selectedFilters.product.includes(product.category);
-    const matchesShade = selectedFilters.shade.length === 0 || selectedFilters.shade.includes(product.shade);
-    const matchesShadeStyle = selectedFilters.shadeStyle.length === 0 || selectedFilters.shadeStyle.includes(product.shadeStyle);
-    const matchesLength = selectedFilters.length.length === 0 || selectedFilters.length.includes(product.length);
-    const matchesFeatured = selectedFilters.featured.length === 0 || selectedFilters.featured.includes(product.featured);
+    const matchesShade = selectedFilters.shade.length === 0 || (product.shades && product.shades.some(s => selectedFilters.shade.includes(s)));
+    const matchesShadeStyle = selectedFilters.shadeStyle.length === 0;
+    const matchesLength = selectedFilters.length.length === 0 || (product.lengths && product.lengths.some(l => selectedFilters.length.includes(l)));
+    const matchesFeatured = selectedFilters.featured.length === 0 || (selectedFilters.featured.includes("Trending") && product.featured);
     
     return matchesProduct && matchesShade && matchesShadeStyle && matchesLength && matchesFeatured;
   });
