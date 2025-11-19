@@ -9,11 +9,12 @@ export interface Product {
   title: string;
   description: string;
   price: number;
-  category: string;
+  category: string; // New Arrivals, Tape-Ins, Ponytails, Clip-Ins, Trending, Best Selling
+  hairExtensionType?: string; // Luxury Wigs, Invisible Tape, Hand-Tied Weft, Classic Weft
   images: string[];
   colors?: string[];
-  shades?: string[];
-  lengths?: string[];
+  shades?: string[]; // Black, Brown, Blonde, Red
+  lengths?: string[]; // 14", 16", 18", 20", 22", 24"
   inStock: boolean;
   featured?: boolean;
   createdAt?: Date;
