@@ -2,13 +2,14 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { Button } from "../../components/ui/button";
-import { LayoutDashboard, Package, ShoppingCart, FileText, LogOut } from "lucide-react";
+import { LayoutDashboard, Package, ShoppingCart, FileText, LogOut, BarChart3 } from "lucide-react";
 
 const menuItems = [
   { label: "Dashboard", path: "/admin/dashboard", icon: LayoutDashboard },
+  { label: "Analytics", path: "/admin/analytics", icon: BarChart3 },
   { label: "Products", path: "/admin/products", icon: Package },
   { label: "Orders", path: "/admin/orders", icon: ShoppingCart },
-  { label: "Blog", path: "/admin/blog", icon: FileText },
+  { label: "Blogs", path: "/admin/blogs", icon: FileText },
 ];
 
 export const AdminDashboardLayout = () => {
