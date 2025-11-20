@@ -28,11 +28,11 @@ export const AdminDashboardLayout = () => {
   return (
     <div className="min-h-screen flex bg-background">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-border bg-card">
+      <aside className="w-64 border-r border-border bg-card flex flex-col">
         <div className="p-6">
           <h1 className="text-xl font-bold">Admin Panel</h1>
         </div>
-        <nav className="px-4 space-y-2">
+        <nav className="px-4 space-y-2 flex-1 overflow-y-auto pb-20">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -52,7 +52,7 @@ export const AdminDashboardLayout = () => {
             );
           })}
         </nav>
-        <div className="absolute bottom-4 left-4 right-4">
+        <div className="p-4 border-t border-border mt-auto">
           <Button
             onClick={handleLogout}
             variant="outline"

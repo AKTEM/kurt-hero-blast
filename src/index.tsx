@@ -24,7 +24,7 @@ import { Payment } from "./screens/Dashboard/Payment";
 import { AddressBook } from "./screens/Dashboard/AddressBook";
 import { SecuritySettings } from "./screens/Dashboard/SecuritySettings";
 import { AdminLoginPage } from "./screens/AdminPage";
-import { AdminDashboardLayout, AdminDashboardHome, AdminProducts, AdminProductForm, AdminBlogs, AdminBlogForm, AdminAnalytics } from "./screens/AdminDashboard";
+import { AdminDashboardLayout, AdminDashboardHome, AdminProducts, AdminProductForm, AdminBlogs, AdminBlogForm, AdminAnalytics, AdminOrders } from "./screens/AdminDashboard";
 import { ProtectedAdminRoute } from "./components/admin/ProtectedAdminRoute";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
@@ -73,7 +73,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
               <Route path="blogs" element={<AdminBlogs />} />
               <Route path="blogs/new" element={<AdminBlogForm />} />
               <Route path="blogs/edit/:id" element={<AdminBlogForm />} />
-              <Route path="orders" element={<div className="text-center py-12"><h2 className="text-2xl font-bold">Orders Management</h2><p className="text-muted-foreground mt-2">Coming in Phase 3</p></div>} />
+              <Route path="orders" element={<AdminOrders />} />
             </Route>
           </Routes>
         </BrowserRouter>

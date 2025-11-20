@@ -5,3 +5,4 @@ export { AdminProductForm } from "./AdminProductForm";
 export { AdminBlogs } from "./AdminBlogs";
 export { AdminBlogForm } from "./AdminBlogForm";
 export { AdminAnalytics } from "./AdminAnalytics";
+export { AdminOrders } from "./AdminOrders";
