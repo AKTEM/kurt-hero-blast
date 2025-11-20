@@ -37,7 +37,7 @@ export const Orders = () => {
   return (
     <DashboardLayout>
       <div className="space-y-6">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Orders</h1>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Orders</h1>
 
         {mockOrders.length === 0 ? (
           <div className="bg-white border border-gray-200 rounded-lg p-12 flex flex-col items-center justify-center text-center">
@@ -53,10 +53,10 @@ export const Orders = () => {
           </div>
         ) : (
           <>
-            <div className="flex gap-4 border-b">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 border-b overflow-x-auto">
               <button
                 onClick={() => setActiveTab("ongoing")}
-                className={`px-6 py-3 font-bold transition-all ${
+                className={`px-4 sm:px-6 py-3 font-bold transition-all whitespace-nowrap text-sm sm:text-base ${
                   activeTab === "ongoing"
                     ? "bg-black text-white"
                     : "text-gray-700 hover:bg-gray-100"
@@ -66,7 +66,7 @@ export const Orders = () => {
               </button>
               <button
                 onClick={() => setActiveTab("canceled")}
-                className={`px-6 py-3 font-bold transition-all ${
+                className={`px-4 sm:px-6 py-3 font-bold transition-all whitespace-nowrap text-sm sm:text-base ${
                   activeTab === "canceled"
                     ? "bg-black text-white"
                     : "text-gray-700 hover:bg-gray-100"
@@ -80,12 +80,12 @@ export const Orders = () => {
               {mockOrders.map((order) => (
                 <div
                   key={order.id}
-                  className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row gap-6"
+                  className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:gap-6"
                 >
                   <img
                     src={order.image}
                     alt={order.productName}
-                    className="w-32 h-32 object-cover rounded-lg"
+                    className="w-full sm:w-32 h-48 sm:h-32 object-cover rounded-lg flex-shrink-0"
                   />
                   
                   <div className="flex-1">

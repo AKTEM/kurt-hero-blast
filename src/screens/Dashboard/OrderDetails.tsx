@@ -24,11 +24,11 @@ export const OrderDetails = () => {
           <p className="text-sm font-bold">Total: $50.00</p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row gap-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:gap-6">
           <img
             src="/img-20250902-wa0002.png"
             alt="Product"
-            className="w-32 h-32 object-cover rounded-lg"
+            className="w-full sm:w-32 h-48 sm:h-32 object-cover rounded-lg flex-shrink-0"
           />
           
           <div className="flex-1">

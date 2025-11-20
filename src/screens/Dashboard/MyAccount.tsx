@@ -34,15 +34,15 @@ export const MyAccount = () => {
 
   return (
     <DashboardLayout>
-      <div className="space-y-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">General Information</h1>
+      <div className="space-y-6 sm:space-y-8">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">General Information</h1>
 
-        <div className="flex items-center gap-4">
-          <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
             <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
           </div>
           
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <label htmlFor="profile-upload">
               <Button
                 type="button"
@@ -69,9 +69,9 @@ export const MyAccount = () => {
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold">Address</h2>
+        <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-bold">Address</h2>
             <button
               onClick={() => setIsEditing(!isEditing)}
               className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
@@ -81,7 +81,7 @@ export const MyAccount = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div>
               <p className="text-sm text-gray-500 mb-1">Country</p>
               <p className="text-base font-medium">{formData.country}</p>
@@ -101,9 +101,9 @@ export const MyAccount = () => {
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold">Personal Details</h2>
+        <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-bold">Personal Details</h2>
             <button
               onClick={() => setIsEditing(!isEditing)}
               className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
@@ -113,7 +113,7 @@ export const MyAccount = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
               <p className="text-sm text-gray-500 mb-1">First Name</p>
               <p className="text-base font-medium">{formData.firstName}</p>

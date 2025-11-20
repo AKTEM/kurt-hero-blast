@@ -26,6 +26,7 @@ import { SecuritySettings } from "./screens/Dashboard/SecuritySettings";
 import { AdminLoginPage } from "./screens/AdminPage";
 import { AdminDashboardLayout, AdminDashboardHome, AdminProducts, AdminProductForm, AdminBlogs, AdminBlogForm, AdminAnalytics, AdminOrders } from "./screens/AdminDashboard";
 import { ProtectedAdminRoute } from "./components/admin/ProtectedAdminRoute";
+import { BlogPage, BlogPostPage } from "./screens/BlogPage";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
@@ -54,6 +55,10 @@ createRoot(document.getElementById("app") as HTMLElement).render(
             <Route path="/dashboard/payment" element={<Payment />} />
             <Route path="/dashboard/address-book" element={<AddressBook />} />
             <Route path="/dashboard/security" element={<SecuritySettings />} />
+            
+            {/* Blog Routes */}
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
             
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLoginPage />} />
