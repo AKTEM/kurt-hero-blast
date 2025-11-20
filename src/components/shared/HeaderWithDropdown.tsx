@@ -72,7 +72,7 @@ export const HeaderWithDropdown = (): JSX.Element => {
     { label: "SHOP", path: "/shop", hasDropdown: true },
     { label: "LEARN", path: "/learn" },
     { label: "OUR WORLD", path: "/our-world" },
-    { label: "BLOG", path: "/" },
+    { label: "BLOG", path: "/blog" },
   ];
 
   return (
@@ -240,9 +240,9 @@ export const HeaderWithDropdown = (): JSX.Element => {
       </div>
 
       <div
-        className={`lg:hidden absolute left-0 right-0 bg-primaryprimary-2 shadow-lg overflow-hidden transition-all duration-300 ease-in-out z-50 ${
-          isMobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`lg:hidden fixed left-0 right-0 bg-primaryprimary-2 shadow-lg transition-all duration-300 ease-in-out z-50 ${
+          isMobileMenuOpen ? "max-h-[calc(100vh-5rem)] opacity-100" : "max-h-0 opacity-0"
+        } overflow-y-auto`}
         style={{ top: "100%" }}
       >
         <nav className="flex flex-col py-4 px-4 sm:px-8">
