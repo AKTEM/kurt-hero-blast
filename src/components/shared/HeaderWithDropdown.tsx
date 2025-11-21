@@ -239,110 +239,104 @@ export const HeaderWithDropdown = (): JSX.Element => {
         </div>
       </div>
 
-      <div
-        className={`lg:hidden fixed left-0 right-0 bg-primaryprimary-2 shadow-lg transition-all duration-300 ease-in-out z-50 ${
-          isMobileMenuOpen ? "max-h-[calc(100vh-5rem)] opacity-100" : "max-h-0 opacity-0"
-        } overflow-y-auto`}
-        style={{ top: "100%" }}
-      >
-        <nav className="flex flex-col py-4 px-4 sm:px-8">
-          {navigationItems.map((item, index) => (
-            <div key={index}>
-              {item.hasDropdown ? (
-                <>
-                  <button
-                    onClick={() => setIsShopMobileOpen(!isShopMobileOpen)}
-                    className="flex items-center justify-between w-full py-4 px-4 hover:bg-white/10 transition-all duration-200 rounded-lg"
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden fixed left-0 right-0 bg-primaryprimary-2 shadow-lg z-50 max-h-[calc(100vh-5rem)] overflow-y-auto"
+          style={{ top: "100%" }}
+        >
+          <nav className="flex flex-col py-4 px-4 sm:px-8">
+            {navigationItems.map((item, index) => (
+              <div key={index}>
+                {item.hasDropdown ? (
+                  <>
+                    <button
+                      onClick={() => setIsShopMobileOpen(!isShopMobileOpen)}
+                      className="flex items-center justify-between w-full py-4 px-4 hover:bg-white/10 transition-all duration-200 rounded-lg"
+                    >
+                      <span className="font-bold-title-medium font-[number:var(--bold-title-medium-font-weight)] text-white text-[length:var(--bold-title-medium-font-size)] tracking-[var(--bold-title-medium-letter-spacing)] leading-[var(--bold-title-medium-line-height)] [font-style:var(--bold-title-medium-font-style)]">
+                        {item.label}
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-white transition-transform ${
+                          isShopMobileOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {isShopMobileOpen && (
+                      <div className="bg-white/5 rounded-lg ml-4 my-2 max-h-[60vh] overflow-y-auto">
+                        <div className="p-4">
+                          <p className="text-[#E3A857] text-sm font-bold mb-2">FEATURED</p>
+                          <Link
+                            to="/shop"
+                            className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors font-semibold"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsShopMobileOpen(false);
+                            }}
+                          >
+                            Go to shop
+                          </Link>
+                          {shopCategories.featured.map((category, idx) => (
+                            <Link
+                              key={idx}
+                              to={category.path}
+                              className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setIsShopMobileOpen(false);
+                              }}
+                            >
+                              {category.label}
+                            </Link>
+                          ))}
+                          <p className="text-[#E3A857] text-sm font-bold mb-2 mt-4">HAIR EXTENSIONS</p>
+                          {shopCategories.hairExtensions.map((category, idx) => (
+                            <Link
+                              key={idx}
+                              to={category.path}
+                              className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setIsShopMobileOpen(false);
+                              }}
+                            >
+                              {category.label}
+                            </Link>
+                          ))}
+                          <p className="text-[#E3A857] text-sm font-bold mb-2 mt-4">HAIR SHADE</p>
+                          {shopCategories.hairShade.map((category, idx) => (
+                            <Link
+                              key={idx}
+                              to={category.path}
+                              className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setIsShopMobileOpen(false);
+                              }}
+                            >
+                              {category.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className="flex items-center justify-start gap-2.5 py-4 px-4 hover:bg-white/10 transition-all duration-200 rounded-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <span className="font-bold-title-medium font-[number:var(--bold-title-medium-font-weight)] text-white text-[length:var(--bold-title-medium-font-size)] tracking-[var(--bold-title-medium-letter-spacing)] leading-[var(--bold-title-medium-line-height)] [font-style:var(--bold-title-medium-font-style)]">
                       {item.label}
                     </span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-white transition-transform ${
-                        isShopMobileOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {isShopMobileOpen && (
-                    <div className="bg-white/5 rounded-lg ml-4 my-2">
-                      <div className="p-4">
-                        <p className="text-[#E3A857] text-sm font-bold mb-2">FEATURED</p>
-                        <Link
-                          to="/shop"
-                          className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors font-semibold"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          Go to shop
-                        </Link>
-                        {shopCategories.featured.map((category, idx) => (
-                          <Link
-                            key={idx}
-                            to={category.path}
-                            className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {category.label}
-                          </Link>
-                        ))}
-                        <p className="text-[#E3A857] text-sm font-bold mb-2 mt-4">HAIR EXTENSIONS</p>
-                        {shopCategories.hairExtensions.map((category, idx) => (
-                          <Link
-                            key={idx}
-                            to={category.path}
-                            className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {category.label}
-                          </Link>
-                        ))}
-                        <p className="text-[#E3A857] text-sm font-bold mb-2 mt-4">HAIR SHADE</p>
-                        {shopCategories.hairShade.map((category, idx) => (
-                          <Link
-                            key={idx}
-                            to={category.path}
-                            className="block text-white text-sm py-2 hover:text-[#E3A857] transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {category.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <Link
-                  to={item.path}
-                  className="flex items-center justify-start gap-2.5 py-4 px-4 hover:bg-white/10 transition-all duration-200 rounded-lg transform hover:translate-x-1"
-                  style={{
-                    animation: isMobileMenuOpen
-                      ? `slideInFromLeft 0.3s ease-out ${index * 0.1}s both`
-                      : "none",
-                  }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="font-bold-title-medium font-[number:var(--bold-title-medium-font-weight)] text-white text-[length:var(--bold-title-medium-font-size)] tracking-[var(--bold-title-medium-letter-spacing)] leading-[var(--bold-title-medium-line-height)] [font-style:var(--bold-title-medium-font-style)]">
-                    {item.label}
-                  </span>
-                </Link>
-              )}
-            </div>
-          ))}
-        </nav>
-      </div>
-
-      <style>{`
-        @keyframes slideInFromLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      )}
 
       <ShoppingCart
         isOpen={isCartOpen}
