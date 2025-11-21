@@ -241,7 +241,7 @@ export const HeaderWithDropdown = (): JSX.Element => {
 
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden absolute left-0 right-0 top-full bg-primaryprimary-2 shadow-lg z-40 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto"
+          className="lg:hidden absolute left-0 right-0 top-full bg-black shadow-lg z-40 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto"
         >
           <nav className="flex flex-col py-4 px-4 sm:px-8">
             {navigationItems.map((item, index) => (
